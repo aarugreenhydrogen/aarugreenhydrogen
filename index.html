@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Aaru Green Hydrogen | Next-Gen Clean Energy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- THREE.JS BACKGROUND -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="Aaru Green Hydrogen Logo" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">Aaru <span>Green Hydrogen</span></div>
+      <div class="nav-logo-sub">H₂ Pvt. Ltd.</div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tech">Technology</a></li>
+    <li><button onclick="openModal()">H₂ Intelligence</button></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#innovation">R&amp;D</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <button class="btn-outline" onclick="openModal()">H₂ Intelligence</button>
+    <button class="btn-solid" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Investor Access</button>
+    <button class="hamburger" id="hamburgerBtn" onclick="document.getElementById('mobileMenu').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#tech" onclick="document.getElementById('mobileMenu').classList.remove('open')">Technology</a>
+  <button onclick="document.getElementById('mobileMenu').classList.remove('open'); openModal()">H₂ Intelligence</button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#innovation" onclick="document.getElementById('mobileMenu').classList.remove('open')">R&amp;D</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-photo" style="background-image:url('images/hero-bg.jpg');"></div>
+  <div class="hero-bg-glow glow-1"></div>
+  <div class="hero-bg-glow glow-2"></div>
+
+  <div class="hero-grid">
+    <!-- Left -->
+    <div>
+      <div class="hero-badge hero-animate-1">Green Hydrogen · Net Zero 2040</div>
+      <h1 class="hero-title hero-animate-2">
+        Powering the Future<br>
+        with <span class="accent">Green</span><br>
+        <span class="navy">Hydrogen</span>
+      </h1>
+      <p class="hero-sub hero-animate-3">
+        Aaru Green Hydrogen Pvt. Ltd. engineers sustainable hydrogen solutions through advanced alkaline electrolysis, renewable synergy, and IIT Roorkee-grounded process innovation — for a cleaner, carbon-neutral world.
+      </p>
+      <div class="hero-actions hero-animate-4">
+        <button class="hero-btn-primary" onclick="document.getElementById('tech').scrollIntoView({behavior:'smooth'})">Explore Technology →</button>
+        <button class="hero-btn-secondary" onclick="openModal()">H₂ Intelligence</button>
+      </div>
+      <div class="hero-stats hero-animate-5">
+        <div class="hero-stat">
+          <div class="hero-stat-val">20 MW</div>
+          <div class="hero-stat-label">Green H₂ Plant Modeled</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">25 kW</div>
+          <div class="hero-stat-label">Commercial Stack Designed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">99.97%</div>
+          <div class="hero-stat-label">Model Accuracy (R²) vs. Plant Data</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">Alkaline</div>
+          <div class="hero-stat-label">Electrolysis Technology Focus</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — Logo Showcase -->
+    <div class="hero-visual hero-animate-3">
+      <div class="hero-logo-frame">
+        <img src="images/logo.png" alt="Aaru Green Hydrogen" class="hero-logo-img">
+      </div>
+      <div class="hero-orbit-tags">
+        <span class="orbit-tag">⚡ Alkaline Electrolysis</span>
+        <span class="orbit-tag">💧 Water Splitting</span>
+        <span class="orbit-tag">🌱 Net Zero</span>
+        <span class="orbit-tag">🔬 Process Modelling &amp; Simulation</span>
+        <span class="orbit-tag">🤖 AI-Optimised</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="images/facility.jpg" alt="AARU Green Hydrogen alkaline electrolyzer container facility with wind turbines and solar panels">
+        <div class="about-img-overlay"></div>
+        <div class="about-img-badge">⚡ Alkaline Electrolysis Core</div>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <div>
+          <span class="section-label">Who We Are</span>
+          <h2 class="section-title">Transforming the<br>future of <span class="italic">clean energy</span></h2>
+          <div class="divider"></div>
+        </div>
+        <p>Founded in 2024, Aaru Green Hydrogen Pvt. Ltd. is building the backbone of India's hydrogen economy. Drawing from an IIT Roorkee-grounded research ecosystem, we merge advanced process engineering, alkaline electrolyzer design, and renewable energy synergy to deliver scalable, zero-carbon hydrogen solutions.</p>
+        <p>Our interdisciplinary team combines chemical engineering rigour with digital process simulation — grounded in real process modeling, stack design, and plant-scale validation work.</p>
+        <div class="about-tags">
+          <span class="about-tag">Net-Zero Anchored</span>
+          <span class="about-tag">Innovation Driven</span>
+          <span class="about-tag">IIT Research Ecosystem</span>
+          <span class="about-tag">Made in India</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar reveal">
+      <div class="stat-cell">
+        <div class="stat-num">20<span class="stat-unit"> MW</span></div>
+        <div class="stat-desc">Green H₂ Plant Modeled</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">25<span class="stat-unit"> kW</span></div>
+        <div class="stat-desc">Commercial Stack Designed</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">99<span class="stat-unit">.97%</span></div>
+        <div class="stat-desc">Model Accuracy (R²)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">Alkaline</div>
+        <div class="stat-desc">Electrolysis Focus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="tech">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Engineering Excellence</span>
+      <h2 class="section-title" style="color:white;">Our Advanced<br><span class="italic">Technology Stack</span></h2>
+    </div>
+
+    <div class="tech-grid reveal reveal-delay-1">
+      <div class="tech-card">
+        <div class="tech-icon">🌿</div>
+        <h3>Green Hydrogen Production</h3>
+        <p>Process design and simulation for renewable-powered alkaline electrolysis, targeting high-purity green hydrogen with zero carbon footprint.</p>
+        <div class="tech-bar"><div class="tech-bar-fill" data-width="92"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">⚡</div>
+        <h3>Alkaline Electrolysis Systems</h3>
+        <p>Component-level alkaline electrolyzer design and process optimization — from bench-scale validation to commercial-scale stack architecture.</p>
+        <div class="tech-bar"><div class="tech-bar-fill" data-width="85"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">💧</div>
+        <h3>Advanced Water Splitting</h3>
+        <p>Process-level research into alkaline electrolyzer design targeting improved current density and operational lifetime.</p>
+        <div class="tech-bar"><div class="tech-bar-fill" data-width="78"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">☀️</div>
+        <h3>Renewable Energy Integration</h3>
+        <p>Intelligent coupling with solar & wind assets — dynamic load-matching ensures maximum renewable utilisation.</p>
+        <div class="tech-bar"><div class="tech-bar-fill" data-width="88"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🔬</div>
+        <h3>Ultra-Pure H₂ Purification</h3>
+        <p>Process design for high-purity hydrogen separation, targeting fuel-cell and industrial-grade specifications.</p>
+        <div class="tech-bar"><div class="tech-bar-fill" data-width="96"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">❄️</div>
+        <h3>Cryogenic Storage & Transport</h3>
+        <p>Process design concepts for liquid hydrogen storage and distribution — targeting safe, efficient large-scale logistics.</p>
+        <div class="tech-bar"><div class="tech-bar-fill" data-width="72"></div></div>
+      </div>
+      <div class="tech-card" style="grid-column: 1/-1; display: flex; gap: 36px; align-items: center;">
+        <div class="tech-icon">🏭</div>
+        <div>
+          <h3>Industrial Energy Decarbonization</h3>
+          <p>Turnkey green hydrogen integration for steel, cement, fertilizer, and refining industries — replacing grey hydrogen and fossil fuels at the source.</p>
+        </div>
+        <div class="tech-bar" style="flex:1; margin-top:0;"><div class="tech-bar-fill" data-width="80"></div></div>
+      </div>
+    </div>
+
+    <div class="tech-metrics reveal reveal-delay-2">
+      <p style="text-align:center; font-size:13px; color:var(--stone-light); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Modeled at 20 MW Plant Scale</p>
+      <div class="tech-metric">
+        <div class="tech-metric-val">~90%</div>
+        <div class="tech-metric-label">Modeled Carbon Reduction vs. Grey H₂</div>
+      </div>
+      <div class="tech-metric">
+        <div class="tech-metric-val">75%</div>
+        <div class="tech-metric-label">Target System Efficiency</div>
+      </div>
+      <div class="tech-metric">
+        <div class="tech-metric-val">100%</div>
+        <div class="tech-metric-label">Renewable-Backed H₂ (Design Basis)</div>
+      </div>
+      <div class="tech-metric">
+        <div class="tech-metric-val">~33k t</div>
+        <div class="tech-metric-label">Modeled CO₂ Avoided Annually</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section id="sustainability">
+  <div class="section-inner">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">Sustainability Manifesto</span>
+    </div>
+        <div class="sustain-earth-visual reveal">
+      <div class="sustain-earth-frame">
+        <img src="images/earth.png" alt="Earth surrounded by swirling water and green leaves, symbolizing sustainability">
+      </div>
+    </div>
+<blockquote class="sustainability-quote reveal reveal-delay-1">
+      "Hydrogen is not just fuel. It is the foundation of a <span>sustainable industrial revolution</span> — and we are building its infrastructure."
+    </blockquote>
+    <div class="sustain-cards">
+      <div class="sustain-card reveal reveal-delay-1">
+        <span class="sustain-icon">🌱</span>
+        <h3>Net Zero 2040</h3>
+        <p>Science-based targets aligned with Paris Agreement commitments</p>
+      </div>
+      <div class="sustain-card reveal reveal-delay-2">
+        <span class="sustain-icon">🚛</span>
+        <h3>Green Mobility</h3>
+        <p>Hydrogen fuel for heavy transport, shipping & aviation decarbonization</p>
+      </div>
+      <div class="sustain-card reveal reveal-delay-3">
+        <span class="sustain-icon">🏭</span>
+        <h3>Industrial Decarb</h3>
+        <p>Replacing fossil fuels in steel, cement & chemical manufacturing</p>
+      </div>
+      <div class="sustain-card reveal reveal-delay-4">
+        <span class="sustain-icon">🔋</span>
+        <h3>Long-Duration Storage</h3>
+        <p>Seasonal hydrogen storage for grid resilience and energy security</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONAL GREEN HYDROGEN MISSION -->
+<section id="mission" style="background: var(--forest); color: white;">
+  <div class="section-inner">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label" style="color: var(--green-light);">National Alignment</span>
+      <h2 class="section-title" style="color: white;">India's National Green Hydrogen <span class="italic" style="color: var(--green-light);">Mission</span></h2>
+      <p style="max-width: 640px; margin: 20px auto 0; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.7;">
+        Approved by the Union Cabinet in January 2023 with an initial outlay of ₹19,744 crore, the Mission sets India's roadmap to become a global green hydrogen hub by 2030.
+      </p>
+    </div>
+    <div class="tech-metrics reveal reveal-delay-1" style="margin-top: 56px;">
+      <div class="tech-metric">
+        <div class="tech-metric-val">5 MMT</div>
+        <div class="tech-metric-label">Annual Green H₂ Capacity by 2030</div>
+      </div>
+      <div class="tech-metric">
+        <div class="tech-metric-val">125 GW</div>
+        <div class="tech-metric-label">Associated Renewable Capacity Addition</div>
+      </div>
+      <div class="tech-metric">
+        <div class="tech-metric-val">₹8L Cr</div>
+        <div class="tech-metric-label">Total Investment Mobilised by 2030</div>
+      </div>
+      <div class="tech-metric">
+        <div class="tech-metric-val">50 MMT</div>
+        <div class="tech-metric-label">Annual CO₂ Emissions Averted by 2030</div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2" style="max-width: 780px; margin: 56px auto 0; text-align: center; padding: 32px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);">
+      <p style="color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8;">
+        Aaru Green Hydrogen's applied research — alkaline electrolyzer design, plant-scale process simulation, and performance modeling — is directed at the same outcomes the Mission is built to achieve: domestic electrolyzer capability, lower green hydrogen costs, and a credible path to commercial-scale deployment.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Integrated Capabilities</span>
+      <h2 class="section-title">What We <span class="italic">Deliver</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">01</div>
+        <span class="service-icon">🌿</span>
+        <h3>Green Hydrogen Production</h3>
+        <p>Electrolysis plant process design and simulation for green hydrogen production, from bench-scale modeling toward commercial scale.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">02</div>
+        <span class="service-icon">📊</span>
+        <h3>Process Simulation & Optimisation</h3>
+        <p>Process modelling and simulation-driven thermodynamic analysis for optimised system performance and yield.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">03</div>
+        <span class="service-icon">⚙️</span>
+        <h3>Industrial Energy Solutions</h3>
+        <p>Custom hydrogen integration strategies and feasibility studies for hard-to-abate sectors.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">04</div>
+        <span class="service-icon">❄️</span>
+        <h3>Advanced Storage Systems</h3>
+        <p>Process design studies for cryogenic, compressed, and carrier-based hydrogen storage, with safety and logistics as core design targets.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">05</div>
+        <span class="service-icon">☀️</span>
+        <h3>Renewable Integration Consulting</h3>
+        <p>Strategic design of hybrid renewable-hydrogen systems for industrial hydrogen production projects.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">06</div>
+        <span class="service-icon">🔬</span>
+        <h3>R&amp;D &amp; Innovation Labs</h3>
+        <p>Applied research on process modeling, plant simulation, and system-level performance optimization.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">07</div>
+        <span class="service-icon">🏗️</span>
+        <h3>Sustainable Process Design</h3>
+        <p>Life-cycle-optimised plant engineering that minimises water, energy, and material inputs from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section id="innovation">
+  <div class="innovation-grid-bg"></div>
+  <div class="section-inner" style="position:relative; z-index:2;">
+    <div class="reveal">
+      <span class="section-label">Innovation Ecosystem</span>
+      <h2 class="section-title">Process Modelling &amp; Simulation · AI · <span class="italic">Process 4.0</span></h2>
+      <p class="innovation-lead">Advanced thermodynamics, simulation-driven design, and AI-assisted energy systems for improved efficiency. Our R&D hub mirrors top-tier industrial digitalization.</p>
+    </div>
+    <div class="innovation-pills reveal reveal-delay-1">
+      <div class="innovation-pill">🧬 Molecular Networks</div>
+      <div class="innovation-pill">⚡ Digital Energy Grids</div>
+      <div class="innovation-pill">💧 Quantum H₂ Simulation</div>
+      <div class="innovation-pill">🤖 ML Process Control</div>
+      <div class="innovation-pill">📡 IoT Plant Monitoring</div>
+    </div>
+    <div class="innovation-cards">
+      <div class="innov-card reveal reveal-delay-1">
+        <div class="innov-num">01 / SIMULATION</div>
+        <h4>Process Modelling &amp; Simulation</h4>
+        <p>Real-time process simulation and rigorous thermodynamic optimisation for alkaline electrolysis systems — closing the gap between design and reality.</p>
+      </div>
+      <div class="innov-card reveal reveal-delay-2">
+        <div class="innov-num">02 / INTELLIGENCE</div>
+        <h4>AI-Assisted Energy Systems</h4>
+        <p>Exploratory work on machine learning models for predictive maintenance, anomaly detection, and dynamic load optimisation as part of our applied research direction.</p>
+      </div>
+      <div class="innov-card reveal reveal-delay-3">
+        <div class="innov-num">03 / DIGITAL TWIN</div>
+        <h4>Virtual Plant Replicas</h4>
+        <p>Calibrated process models of hydrogen production plants supporting scenario testing and performance prediction ahead of physical deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="gallery-title reveal">
+      <span class="section-label">Visual Atlas</span>
+      <h2 class="section-title">Our <span class="italic">Infrastructure</span></h2>
+    </div>
+    <div class="gallery-grid reveal reveal-delay-1">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581092335871-4b6a4fd3a7c2?w=900&auto=format&q=80" alt="Electrolysis Core" loading="lazy">
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-caption">Electrolysis Core</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=500&auto=format&q=80" alt="Renewable Energy" loading="lazy">
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-caption">Renewable Integration</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e7882c?w=500&auto=format&q=80" alt="Lab Research" loading="lazy">
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-caption">R&D Laboratory</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02b120?w=900&auto=format&q=80" alt="Industrial Plant" loading="lazy">
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-caption">Industrial Scale Operations</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1473341304170-971d5b5d1e04?w=500&auto=format&q=80" alt="Energy Storage" loading="lazy">
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-caption">Energy Storage Systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Let's Build the<br><span class="italic">Future Together</span></h2>
+      <div class="divider"></div>
+      <p style="color:var(--stone); font-size:16px; margin-top:8px;">Investors, researchers, and partners — join the clean energy revolution.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal reveal-delay-1">
+        <div class="contact-info-item">
+          <span class="contact-info-label">Email</span>
+          <div class="contact-info-val"><a href="mailto:aarugreenhydrogen@gmail.com">aarugreenhydrogen@gmail.com</a></div>
+          <div class="contact-info-sub">Direct investor inquiries · Partnership decks · R&D collaboration</div>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Response Time</span>
+          <div class="contact-info-val">Within 24 hours</div>
+          <div class="contact-info-sub">Green Hydrogen momentum awaits — we're ready to move fast.</div>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Location</span>
+          <div class="contact-info-val">India · Global Operations</div>
+          <div class="contact-info-sub">Headquartered in India with partnerships across Asia, Europe and the Middle East.</div>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Opportunities</span>
+          <div class="contact-info-val">Investors · R&D Partners · Technology Collaborations</div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group" id="group-userName">
+              <label for="userName">Full Name *</label>
+              <input type="text" id="userName" name="name" autocomplete="name" placeholder="Dr. Ananya Sharma" required>
+              <span class="form-error-msg">Please enter your name.</span>
+            </div>
+            <div class="form-group" id="group-userEmail">
+              <label for="userEmail">Email Address *</label>
+              <input type="email" id="userEmail" name="email" autocomplete="email" placeholder="you@company.com" required>
+              <span class="form-error-msg">Please enter a valid email address.</span>
+            </div>
+          </div>
+          <div class="form-group" id="group-userCompany">
+            <label for="userCompany">Company / Organisation</label>
+            <input type="text" id="userCompany" name="company" autocomplete="organization" placeholder="Your organisation name">
+          </div>
+          <div class="form-group" id="group-subject">
+            <label for="subject">Inquiry Type *</label>
+            <select id="subject" name="inquiry_type" required>
+              <option value="">Select inquiry type…</option>
+              <option>Investment / Funding</option>
+              <option>R&D Collaboration</option>
+              <option>Technology Partnership</option>
+              <option>Project Commissioning</option>
+              <option>General Inquiry</option>
+            </select>
+            <span class="form-error-msg">Please select an inquiry type.</span>
+          </div>
+          <div class="form-group" id="group-message">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project, goals, or questions…" required minlength="10"></textarea>
+            <span class="form-error-msg">Please enter at least 10 characters.</span>
+          </div>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <button type="submit" class="form-submit" id="submitBtn">
+            <span class="form-spinner"></span>
+            <span class="form-submit-label">Send Inquiry →</span>
+          </button>
+          <div id="formStatus" role="status" aria-live="polite"></div>
+          <p class="field-hint" style="text-align:center; margin-top:14px;">Prefer email? Write to us directly at <a href="mailto:aarugreenhydrogen@gmail.com" style="color:var(--green); font-weight:600;">aarugreenhydrogen@gmail.com</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="cta-title">Ready to <span>Accelerate</span><br>the Hydrogen Economy?</h2>
+  <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Aaru Green Hydrogen →</button>
+  <p class="cta-sub">Join global pioneers in green hydrogen infrastructure</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="AARU Green Hydrogen Logo">
+      <div class="footer-logo-text">
+        <div class="footer-logo-name">Aaru <span>Green Hydrogen</span></div>
+        <span class="footer-logo-sub">Powering a Sustainable Future</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">Privacy Policy</a>
+      <a href="mailto:aarugreenhydrogen@gmail.com">Email</a>
+      <a href="#">Sustainability Report</a>
+    </div>
+    <div class="footer-copy">© 2026 Aaru Green Hydrogen Pvt. Ltd. — net-zero engineering</div>
+  </div>
+</footer>
+
+<!-- H₂ INTELLIGENCE MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <div>
+        <span class="section-label">Deep Intelligence</span>
+        <h2 id="modalTitle">Green Hydrogen Intelligence</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h3>Why Green Hydrogen Matters</h3>
+        <p>Green hydrogen is the only scalable zero-carbon fuel capable of decarbonizing hard-to-abate sectors — steel, chemicals, heavy transport, shipping, and aviation. Unlike batteries, hydrogen enables long-duration seasonal energy storage and can be transported globally via existing infrastructure.</p>
+      </div>
+      <div class="modal-stats">
+        <div class="modal-stat-card"><div class="val">6 Gt</div><div class="lbl">Annual CO₂ reduction by 2050</div></div>
+        <div class="modal-stat-card"><div class="val">$2.5T</div><div class="lbl">Global market by 2050</div></div>
+        <div class="modal-stat-card"><div class="val">30M</div><div class="lbl">New jobs globally</div></div>
+      </div>
+      <div class="modal-section">
+        <h3>Current Electrolysis Technologies</h3>
+        <div class="modal-tech-grid">
+          <div class="modal-tech-item"><strong>💧 PEM Electrolysis</strong><p>Efficiency 65–80%, rapid response, perfect for variable renewables. Uses proton exchange membrane for high-purity output.</p></div>
+          <div class="modal-tech-item"><strong>⚡ Alkaline Electrolysis</strong><p>Efficiency 60–75%, mature technology, cost-effective at scale. Best suited for stable baseload renewable supply.</p></div>
+          <div class="modal-tech-item"><strong>🔥 SOEC (High-Temperature)</strong><p>Efficiency 85–90%, leverages waste heat for superior energy economics. Ideal for industrial co-location.</p></div>
+          <div class="modal-tech-item"><strong>🧪 AEM Electrolysis</strong><p>Emerging technology — no precious metals required, lower cost potential. Combines advantages of PEM and Alkaline.</p></div>
+        </div>
+        <p style="font-size:12px; color:var(--stone-light); margin-top:16px; font-style:italic;">Note: the technologies above are provided as general industry context. Aaru Green Hydrogen's own work focuses specifically on alkaline water electrolysis — including process simulation, commercial stack design, and performance modeling.</p>
+      </div>
+      <div class="modal-section">
+        <h3>India's Green Hydrogen Mission</h3>
+        <p>India's National Green Hydrogen Mission targets 5 MMT annual production by 2030, with ₹19,744 crore in incentives. Aaru Green Hydrogen is engaging with this transition through applied research in alkaline electrolyzer design and process engineering.</p>
+      </div>
+      <div style="text-align:center; padding: 32px 0 0;">
+        <button class="btn-solid" style="padding:14px 36px; font-size:15px;" onclick="closeModal(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Our Team →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">↑</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>
